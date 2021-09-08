@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\V1;
+namespace App\Http\Controllers\Api\V1\Article;
 
 use App\Http\Resources\ArticleCollection;
 use App\Http\Resources\ArticleResource;
@@ -19,7 +19,7 @@ class ArticleController extends Controller
     /**
      * 文章列表的資料
      *
-     * @return \Illuminate\Http\Response
+     * @return \App\Http\Resources\ArticleCollection
      */
     public function index()
     {
@@ -31,7 +31,7 @@ class ArticleController extends Controller
      * 新建文章的功能
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \App\Http\Resources\ArticleResource
      */
     public function store(Request $request)
     {
@@ -39,7 +39,6 @@ class ArticleController extends Controller
 
         // 存入資料庫
         $article = Article::create($request->only(['title', 'content']));
-        $article->refresh();
         //TODO 其他商業邏輯
 
         // 回傳統一格式
@@ -48,10 +47,10 @@ class ArticleController extends Controller
     }
 
     /**
-     * 單一文章資料
+     * 查詢單一文章資料
      *
      * @param  \App\Models\Article  $article
-     * @return \Illuminate\Http\Response
+     * @return \App\Http\Resources\ArticleResource
      */
     public function show(Article $article)
     {
@@ -60,11 +59,11 @@ class ArticleController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * 更新文章資料
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Article  $article
-     * @return \Illuminate\Http\Response
+     * @return \App\Http\Resources\ArticleResource
      */
     public function update(Request $request, Article $article)
     {
@@ -75,7 +74,7 @@ class ArticleController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * 刪除文章資料
      *
      * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
