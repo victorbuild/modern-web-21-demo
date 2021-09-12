@@ -38,7 +38,14 @@ class ArticleController extends Controller
         //TODO 驗證使用者傳來的資料
 
         // 存入資料庫
-        $article = Article::create($request->only(['title', 'content']));
+        $article = Article::create($request->all());
+
+        // $request->all() 使用者輸入的值轉換成陣列。
+        // [
+        //     'title' => 'ModernWeb 21 好棒！',
+        //     'content' => 'Victor 很開心，感謝你來聽'
+        // ];
+
         //TODO 其他商業邏輯
 
         // 回傳統一格式
