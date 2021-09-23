@@ -35,8 +35,6 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //TODO 驗證使用者傳來的資料
-
         // 存入資料庫
         $article = Article::create($request->all());
 
@@ -45,8 +43,6 @@ class ArticleController extends Controller
         //     'title' => 'ModernWeb 21 好棒！',
         //     'content' => 'Victor 很開心，感謝你來聽'
         // ];
-
-        //TODO 其他商業邏輯
 
         // 回傳統一格式
         // Http status 201
