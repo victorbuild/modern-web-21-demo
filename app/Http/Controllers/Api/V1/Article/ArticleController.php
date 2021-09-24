@@ -70,7 +70,12 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-        $article->update($request->only(['title', 'content']));
+        $article->update($request->all());
+
+        // $request->all() 使用者輸入的值轉換成陣列。
+        // [
+        //     'title' => 'ModernWeb 21 好棒！- 這是修改後標題',
+        // ]
 
         // Http status 200
         return new ArticleResource($article);
