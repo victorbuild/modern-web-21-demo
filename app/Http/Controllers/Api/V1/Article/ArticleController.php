@@ -74,7 +74,7 @@ class ArticleController extends Controller
 
         // $request->all() 使用者輸入的值轉換成陣列。
         // [
-        //     'title' => 'ModernWeb 21 好棒！- 這是修改後標題',
+        //     'title' => 'ModernWeb 21 好棒！- 修改後',
         // ]
 
         // Http status 200
